@@ -1,0 +1,104 @@
+C:\Users\mitko\source\repos\WeatherApp\WeatherApp\bin\Debug\net6.0-windows\WeatherApp.exe
+C:\Users\mitko\source\repos\WeatherApp\WeatherApp\bin\Debug\net6.0-windows\WeatherApp.deps.json
+C:\Users\mitko\source\repos\WeatherApp\WeatherApp\bin\Debug\net6.0-windows\WeatherApp.runtimeconfig.json
+C:\Users\mitko\source\repos\WeatherApp\WeatherApp\bin\Debug\net6.0-windows\WeatherApp.dll
+C:\Users\mitko\source\repos\WeatherApp\WeatherApp\bin\Debug\net6.0-windows\WeatherApp.pdb
+C:\Users\mitko\source\repos\WeatherApp\WeatherApp\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
+C:\Users\mitko\source\repos\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.csproj.AssemblyReference.cache
+C:\Users\mitko\source\repos\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.Form1.resources
+C:\Users\mitko\source\repos\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.Properties.Resources.resources
+C:\Users\mitko\source\repos\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.csproj.GenerateResource.cache
+C:\Users\mitko\source\repos\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mitko\source\repos\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.AssemblyInfoInputs.cache
+C:\Users\mitko\source\repos\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.AssemblyInfo.cs
+C:\Users\mitko\source\repos\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.csproj.CoreCompileInputs.cache
+C:\Users\mitko\source\repos\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.csproj.CopyComplete
+C:\Users\mitko\source\repos\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.dll
+C:\Users\mitko\source\repos\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\refint\WeatherApp.dll
+C:\Users\mitko\source\repos\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.pdb
+C:\Users\mitko\source\repos\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.genruntimeconfig.cache
+C:\Users\mitko\source\repos\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\ref\WeatherApp.dll
+C:\Users\mitko\source\repos\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.ForecastUC.resources
+E:\ASD\WeatherApp\WeatherApp\bin\Debug\net6.0-windows\WeatherApp.exe
+E:\ASD\WeatherApp\WeatherApp\bin\Debug\net6.0-windows\WeatherApp.deps.json
+E:\ASD\WeatherApp\WeatherApp\bin\Debug\net6.0-windows\WeatherApp.runtimeconfig.json
+E:\ASD\WeatherApp\WeatherApp\bin\Debug\net6.0-windows\WeatherApp.dll
+E:\ASD\WeatherApp\WeatherApp\bin\Debug\net6.0-windows\WeatherApp.pdb
+E:\ASD\WeatherApp\WeatherApp\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
+E:\ASD\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.csproj.AssemblyReference.cache
+E:\ASD\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.Form1.resources
+E:\ASD\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.Properties.Resources.resources
+E:\ASD\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.csproj.GenerateResource.cache
+E:\ASD\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.GeneratedMSBuildEditorConfig.editorconfig
+E:\ASD\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.AssemblyInfoInputs.cache
+E:\ASD\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.AssemblyInfo.cs
+E:\ASD\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.csproj.CoreCompileInputs.cache
+E:\ASD\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.csproj.CopyComplete
+E:\ASD\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.dll
+E:\ASD\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\refint\WeatherApp.dll
+E:\ASD\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.pdb
+E:\ASD\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.genruntimeconfig.cache
+E:\ASD\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\ref\WeatherApp.dll
+C:\ASD_12V_N11\WeatherApp\WeatherApp\bin\Debug\net6.0-windows\WeatherApp.exe
+C:\ASD_12V_N11\WeatherApp\WeatherApp\bin\Debug\net6.0-windows\WeatherApp.deps.json
+C:\ASD_12V_N11\WeatherApp\WeatherApp\bin\Debug\net6.0-windows\WeatherApp.runtimeconfig.json
+C:\ASD_12V_N11\WeatherApp\WeatherApp\bin\Debug\net6.0-windows\WeatherApp.dll
+C:\ASD_12V_N11\WeatherApp\WeatherApp\bin\Debug\net6.0-windows\WeatherApp.pdb
+C:\ASD_12V_N11\WeatherApp\WeatherApp\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
+C:\ASD_12V_N11\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.csproj.AssemblyReference.cache
+C:\ASD_12V_N11\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.Form1.resources
+C:\ASD_12V_N11\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.Properties.Resources.resources
+C:\ASD_12V_N11\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.csproj.GenerateResource.cache
+C:\ASD_12V_N11\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\ASD_12V_N11\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.AssemblyInfoInputs.cache
+C:\ASD_12V_N11\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.AssemblyInfo.cs
+C:\ASD_12V_N11\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.csproj.CoreCompileInputs.cache
+C:\ASD_12V_N11\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.csproj.CopyComplete
+C:\ASD_12V_N11\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.dll
+C:\ASD_12V_N11\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\refint\WeatherApp.dll
+C:\ASD_12V_N11\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.pdb
+C:\ASD_12V_N11\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.genruntimeconfig.cache
+C:\ASD_12V_N11\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\ref\WeatherApp.dll
+C:\ASD_12V_N11\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.ForecastUserControl.resources
+E:\pc source\repos\ASD_12V_N11\WeatherApp\WeatherApp\bin\Debug\net6.0-windows\WeatherApp.exe
+E:\pc source\repos\ASD_12V_N11\WeatherApp\WeatherApp\bin\Debug\net6.0-windows\WeatherApp.deps.json
+E:\pc source\repos\ASD_12V_N11\WeatherApp\WeatherApp\bin\Debug\net6.0-windows\WeatherApp.runtimeconfig.json
+E:\pc source\repos\ASD_12V_N11\WeatherApp\WeatherApp\bin\Debug\net6.0-windows\WeatherApp.dll
+E:\pc source\repos\ASD_12V_N11\WeatherApp\WeatherApp\bin\Debug\net6.0-windows\WeatherApp.pdb
+E:\pc source\repos\ASD_12V_N11\WeatherApp\WeatherApp\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
+E:\pc source\repos\ASD_12V_N11\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.csproj.AssemblyReference.cache
+E:\pc source\repos\ASD_12V_N11\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.ForecastUserControl.resources
+E:\pc source\repos\ASD_12V_N11\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.Form1.resources
+E:\pc source\repos\ASD_12V_N11\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.Properties.Resources.resources
+E:\pc source\repos\ASD_12V_N11\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.csproj.GenerateResource.cache
+E:\pc source\repos\ASD_12V_N11\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.GeneratedMSBuildEditorConfig.editorconfig
+E:\pc source\repos\ASD_12V_N11\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.AssemblyInfoInputs.cache
+E:\pc source\repos\ASD_12V_N11\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.AssemblyInfo.cs
+E:\pc source\repos\ASD_12V_N11\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.csproj.CoreCompileInputs.cache
+E:\pc source\repos\ASD_12V_N11\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.csproj.CopyComplete
+E:\pc source\repos\ASD_12V_N11\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.dll
+E:\pc source\repos\ASD_12V_N11\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\refint\WeatherApp.dll
+E:\pc source\repos\ASD_12V_N11\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.pdb
+E:\pc source\repos\ASD_12V_N11\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.genruntimeconfig.cache
+E:\pc source\repos\ASD_12V_N11\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\ref\WeatherApp.dll
+C:\Users\elkat\source\repos\ASD_12V_N11\WeatherApp\WeatherApp\bin\Debug\net6.0-windows\WeatherApp.exe
+C:\Users\elkat\source\repos\ASD_12V_N11\WeatherApp\WeatherApp\bin\Debug\net6.0-windows\WeatherApp.deps.json
+C:\Users\elkat\source\repos\ASD_12V_N11\WeatherApp\WeatherApp\bin\Debug\net6.0-windows\WeatherApp.runtimeconfig.json
+C:\Users\elkat\source\repos\ASD_12V_N11\WeatherApp\WeatherApp\bin\Debug\net6.0-windows\WeatherApp.dll
+C:\Users\elkat\source\repos\ASD_12V_N11\WeatherApp\WeatherApp\bin\Debug\net6.0-windows\WeatherApp.pdb
+C:\Users\elkat\source\repos\ASD_12V_N11\WeatherApp\WeatherApp\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
+C:\Users\elkat\source\repos\ASD_12V_N11\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.csproj.AssemblyReference.cache
+C:\Users\elkat\source\repos\ASD_12V_N11\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.ForecastUserControl.resources
+C:\Users\elkat\source\repos\ASD_12V_N11\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.Form1.resources
+C:\Users\elkat\source\repos\ASD_12V_N11\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.Properties.Resources.resources
+C:\Users\elkat\source\repos\ASD_12V_N11\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.csproj.GenerateResource.cache
+C:\Users\elkat\source\repos\ASD_12V_N11\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\elkat\source\repos\ASD_12V_N11\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.AssemblyInfoInputs.cache
+C:\Users\elkat\source\repos\ASD_12V_N11\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.AssemblyInfo.cs
+C:\Users\elkat\source\repos\ASD_12V_N11\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.csproj.CoreCompileInputs.cache
+C:\Users\elkat\source\repos\ASD_12V_N11\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.csproj.CopyComplete
+C:\Users\elkat\source\repos\ASD_12V_N11\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.dll
+C:\Users\elkat\source\repos\ASD_12V_N11\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\refint\WeatherApp.dll
+C:\Users\elkat\source\repos\ASD_12V_N11\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.pdb
+C:\Users\elkat\source\repos\ASD_12V_N11\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.genruntimeconfig.cache
+C:\Users\elkat\source\repos\ASD_12V_N11\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\ref\WeatherApp.dll
