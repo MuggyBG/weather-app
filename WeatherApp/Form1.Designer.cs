@@ -40,6 +40,7 @@
             timerErrorWeather = new System.Windows.Forms.Timer(components);
             labErrorForecast = new Label();
             tabPage2 = new TabPage();
+            labForecastError = new Label();
             tabControl2 = new TabControl();
             tabPageMonday = new TabPage();
             monFLP = new FlowLayoutPanel();
@@ -200,6 +201,7 @@
             labSunriseValue = new Label();
             labSunsetValue = new Label();
             tabControl1 = new TabControl();
+            timerForecastError = new System.Windows.Forms.Timer(components);
             tabPage2.SuspendLayout();
             tabControl2.SuspendLayout();
             tabPageMonday.SuspendLayout();
@@ -311,14 +313,24 @@
             // tabPage2
             // 
             tabPage2.AutoScroll = true;
+            tabPage2.Controls.Add(labForecastError);
             tabPage2.Controls.Add(tabControl2);
             tabPage2.Location = new Point(4, 37);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(893, 490);
+            tabPage2.Size = new Size(888, 523);
             tabPage2.TabIndex = 1;
-            tabPage2.Text = "Дневна прогноза";
+            tabPage2.Text = "Прогноза";
             tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // labForecastError
+            // 
+            labForecastError.AutoSize = true;
+            labForecastError.ForeColor = Color.Red;
+            labForecastError.Location = new Point(62, 5);
+            labForecastError.Name = "labForecastError";
+            labForecastError.Size = new Size(0, 28);
+            labForecastError.TabIndex = 94;
             // 
             // tabControl2
             // 
@@ -332,7 +344,7 @@
             tabControl2.Location = new Point(62, 36);
             tabControl2.Name = "tabControl2";
             tabControl2.SelectedIndex = 0;
-            tabControl2.Size = new Size(680, 448);
+            tabControl2.Size = new Size(697, 481);
             tabControl2.TabIndex = 0;
             tabControl2.SelectedIndexChanged += tabControl2_SelectedIndexChanged;
             // 
@@ -359,7 +371,7 @@
             tabPageMonday.Location = new Point(4, 37);
             tabPageMonday.Name = "tabPageMonday";
             tabPageMonday.Padding = new Padding(3);
-            tabPageMonday.Size = new Size(672, 407);
+            tabPageMonday.Size = new Size(689, 440);
             tabPageMonday.TabIndex = 0;
             tabPageMonday.Text = "Понеделник";
             tabPageMonday.UseVisualStyleBackColor = true;
@@ -369,7 +381,7 @@
             monFLP.AutoScroll = true;
             monFLP.Location = new Point(8, 237);
             monFLP.Name = "monFLP";
-            monFLP.Size = new Size(617, 149);
+            monFLP.Size = new Size(624, 186);
             monFLP.TabIndex = 1;
             monFLP.WrapContents = false;
             // 
@@ -614,20 +626,23 @@
             tabPageTuesday.Controls.Add(labTueTempValF);
             tabPageTuesday.Controls.Add(labTueTempVal);
             tabPageTuesday.Controls.Add(labTempTuesday);
-            tabPageTuesday.Location = new Point(4, 29);
+            tabPageTuesday.Location = new Point(4, 37);
             tabPageTuesday.Name = "tabPageTuesday";
             tabPageTuesday.Padding = new Padding(3);
-            tabPageTuesday.Size = new Size(632, 370);
+            tabPageTuesday.Size = new Size(689, 440);
             tabPageTuesday.TabIndex = 1;
             tabPageTuesday.Text = "Вторник";
             tabPageTuesday.UseVisualStyleBackColor = true;
             // 
             // tueFLP
             // 
+            tueFLP.AutoScroll = true;
             tueFLP.Location = new Point(8, 237);
             tueFLP.Name = "tueFLP";
-            tueFLP.Size = new Size(583, 108);
+            tueFLP.Size = new Size(624, 186);
             tueFLP.TabIndex = 94;
+            tueFLP.WrapContents = false;
+            tueFLP.Paint += tueFLP_Paint;
             // 
             // labTuePrecipitation
             // 
@@ -873,17 +888,19 @@
             tabPageWednesday.Controls.Add(labTempWednesday);
             tabPageWednesday.Location = new Point(4, 29);
             tabPageWednesday.Name = "tabPageWednesday";
-            tabPageWednesday.Size = new Size(632, 370);
+            tabPageWednesday.Size = new Size(689, 448);
             tabPageWednesday.TabIndex = 2;
             tabPageWednesday.Text = "Сряда";
             tabPageWednesday.UseVisualStyleBackColor = true;
             // 
             // wedFLP
             // 
+            wedFLP.AutoScroll = true;
             wedFLP.Location = new Point(8, 237);
             wedFLP.Name = "wedFLP";
-            wedFLP.Size = new Size(583, 108);
+            wedFLP.Size = new Size(624, 186);
             wedFLP.TabIndex = 94;
+            wedFLP.WrapContents = false;
             // 
             // labWedPrecipitation
             // 
@@ -1128,7 +1145,7 @@
             tabPageThursday.Controls.Add(labTempThursday);
             tabPageThursday.Location = new Point(4, 29);
             tabPageThursday.Name = "tabPageThursday";
-            tabPageThursday.Size = new Size(632, 370);
+            tabPageThursday.Size = new Size(689, 448);
             tabPageThursday.TabIndex = 3;
             tabPageThursday.Text = "Четвъртък";
             tabPageThursday.UseVisualStyleBackColor = true;
@@ -1136,10 +1153,12 @@
             // 
             // thuFLP
             // 
+            thuFLP.AutoScroll = true;
             thuFLP.Location = new Point(8, 237);
             thuFLP.Name = "thuFLP";
-            thuFLP.Size = new Size(583, 108);
+            thuFLP.Size = new Size(624, 186);
             thuFLP.TabIndex = 78;
+            thuFLP.WrapContents = false;
             // 
             // labThuPrecipitation
             // 
@@ -1384,17 +1403,20 @@
             tabPageFriday.Controls.Add(labTempFriday);
             tabPageFriday.Location = new Point(4, 29);
             tabPageFriday.Name = "tabPageFriday";
-            tabPageFriday.Size = new Size(632, 370);
+            tabPageFriday.Size = new Size(689, 448);
             tabPageFriday.TabIndex = 4;
             tabPageFriday.Text = "Петък";
             tabPageFriday.UseVisualStyleBackColor = true;
             // 
             // friFLP
             // 
+            friFLP.AutoScroll = true;
             friFLP.Location = new Point(8, 237);
             friFLP.Name = "friFLP";
-            friFLP.Size = new Size(583, 108);
+            friFLP.Size = new Size(624, 186);
             friFLP.TabIndex = 78;
+            friFLP.TabStop = true;
+            friFLP.WrapContents = false;
             // 
             // labFriPrecipitation
             // 
@@ -1639,17 +1661,19 @@
             tabPageSaturday.Controls.Add(labTempSaturday);
             tabPageSaturday.Location = new Point(4, 29);
             tabPageSaturday.Name = "tabPageSaturday";
-            tabPageSaturday.Size = new Size(632, 370);
+            tabPageSaturday.Size = new Size(689, 448);
             tabPageSaturday.TabIndex = 5;
             tabPageSaturday.Text = "Събота";
             tabPageSaturday.UseVisualStyleBackColor = true;
             // 
             // satFLP
             // 
+            satFLP.AutoScroll = true;
             satFLP.Location = new Point(8, 237);
             satFLP.Name = "satFLP";
-            satFLP.Size = new Size(583, 108);
+            satFLP.Size = new Size(624, 186);
             satFLP.TabIndex = 78;
+            satFLP.WrapContents = false;
             // 
             // labSatPrecipitation
             // 
@@ -1894,17 +1918,19 @@
             tabPageSunday.Controls.Add(labTempSunday);
             tabPageSunday.Location = new Point(4, 29);
             tabPageSunday.Name = "tabPageSunday";
-            tabPageSunday.Size = new Size(632, 370);
+            tabPageSunday.Size = new Size(689, 448);
             tabPageSunday.TabIndex = 6;
             tabPageSunday.Text = "Неделя";
             tabPageSunday.UseVisualStyleBackColor = true;
             // 
             // sunFLP
             // 
+            sunFLP.AutoScroll = true;
             sunFLP.Location = new Point(8, 237);
             sunFLP.Name = "sunFLP";
-            sunFLP.Size = new Size(583, 108);
+            sunFLP.Size = new Size(624, 186);
             sunFLP.TabIndex = 62;
+            sunFLP.WrapContents = false;
             // 
             // labSunPrecipitation
             // 
@@ -2156,7 +2182,7 @@
             tabPage1.Location = new Point(4, 37);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(893, 490);
+            tabPage1.Size = new Size(888, 523);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Сегашно време";
             tabPage1.UseVisualStyleBackColor = true;
@@ -2486,9 +2512,14 @@
             tabControl1.Location = new Point(93, 65);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(901, 531);
+            tabControl1.Size = new Size(896, 564);
             tabControl1.TabIndex = 47;
             tabControl1.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
+            // 
+            // timerForecastError
+            // 
+            timerForecastError.Interval = 5000;
+            timerForecastError.Tick += timerForecastError_Tick;
             // 
             // Form1
             // 
@@ -2516,6 +2547,7 @@
             Text = "Weather App";
             Load += Form1_Load;
             tabPage2.ResumeLayout(false);
+            tabPage2.PerformLayout();
             tabControl2.ResumeLayout(false);
             tabPageMonday.ResumeLayout(false);
             tabPageMonday.PerformLayout();
@@ -2711,5 +2743,7 @@
         private FlowLayoutPanel friFLP;
         private FlowLayoutPanel satFLP;
         private FlowLayoutPanel sunFLP;
+        private Label labForecastError;
+        private System.Windows.Forms.Timer timerForecastError;
     }
 }

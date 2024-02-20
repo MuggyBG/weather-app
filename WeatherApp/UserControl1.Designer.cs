@@ -67,12 +67,13 @@
             labUCTempF.BackColor = Color.Transparent;
             labUCTempF.Font = new Font("Comic Sans MS", 7.8F, FontStyle.Regular, GraphicsUnit.Point);
             labUCTempF.ForeColor = Color.Black;
-            labUCTempF.Location = new Point(157, 75);
+            labUCTempF.Location = new Point(136, 75);
             labUCTempF.Margin = new Padding(4, 0, 4, 0);
             labUCTempF.Name = "labUCTempF";
             labUCTempF.Size = new Size(34, 18);
             labUCTempF.TabIndex = 46;
             labUCTempF.Text = "N/A";
+            labUCTempF.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // UserControl1
             // 
