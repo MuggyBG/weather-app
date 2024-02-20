@@ -45,24 +45,40 @@ namespace WeatherApp
         public class Daily_Units
         {
             public string time { get; set; }
+            public string weather_code { get; set; }
             public string temperature_2m_max { get; set; }
             public string temperature_2m_min { get; set; }
             public string precipitation_sum { get; set; }
             public string precipitation_hours { get; set; }
+            public string sunrise { get; set; }
+            public string sunset { get; set; }
+            public string wind_speed_10m_max { get; set; }
             public string precipitation_probability_max { get; set; }
         }
 
         public class Daily
         {
             public int[] time { get; set; }
+            public int[] weather_code { get; set; }
             public float[] temperature_2m_max { get; set; }
             public float[] temperature_2m_min { get; set; }
             public float[] precipitation_sum { get; set; }
             public float[] precipitation_hours { get; set; }
+            public int[] sunrise { get; set; }
+            public int[] sunset { get; set; }
+            public float[] wind_speed_10m_max { get; set; }
             public int[] precipitation_probability_max { get; set; }
         }
+        
 
 
     }
 
 }
+
+
+
+
+
+
+

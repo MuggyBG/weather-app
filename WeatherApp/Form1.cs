@@ -123,7 +123,7 @@ namespace WeatherApp
             }
 
         }
-        
+
         async Task getForecast()
         {
             //създаваме нов HttpClient, за вземане на данни от друг API за прогноза
@@ -133,48 +133,165 @@ namespace WeatherApp
 
                 {
                     //даваме url за API Call
-                    string url = string.Format($"https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={lon}&hourly=temperature_2m,precipitation_probability,precipitation,weather_code&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_hours,precipitation_probability_max&timeformat=unixtime&timezone=Europe%2FMoscow");
+                    string url = string.Format($"https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={lon}&hourly=temperature_2m,precipitation_probability,precipitation,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_hours,sunrise,sunset,wind_speed_10m_max,precipitation_probability_max&timeformat=unixtime&timezone=Europe%2FMoscow");
                     //изпращаме резултата към променлива json
                     try
                     {
                         var json = await client.GetStringAsync(url);
                         ForecastInfo.Rootobject Info = JsonConvert.DeserializeObject<ForecastInfo.Rootobject>(json);
                         // Дневна прогноза
-                        double monTemp = Math.Round(Info.hourly.temperature_2m[1], 2);
+                        double monTemp = Math.Round(Info.hourly.temperature_2m[0], 2);
                         double monTempFahr = monTemp * 1.8 + 32;
+                        double monMinTemp = Math.Round(Info.daily.temperature_2m_min[0], 2);
+                        double monMinTempFahr = monMinTemp * 1.8 + 32;
+                        double monMaxTemp = Math.Round(Info.daily.temperature_2m_max[0], 2);
+                        double monMaxTempFahr = monMaxTemp * 1.8 + 32;
+                        labMonSunriseVal.Text = $"{convertDateTime(Info.daily.sunrise[0])}";
+                        labMonSunsetVal.Text = $"{convertDateTime(Info.daily.sunset[0])}";
                         labMonTempVal.Text = $"{monTemp}{Info.hourly_units.temperature_2m}";
                         labMonTempValF.Text = $"{monTempFahr}°F";
+                        labMonMinTempVal.Text = $"{monMinTemp}{Info.hourly_units.temperature_2m}";
+                        labMonMaxTempVal.Text = $"{monMaxTemp}{Info.hourly_units.temperature_2m}";
+                        labMonMinTempValF.Text = $"{monMinTempFahr}°F";
+                        labMonMaxTempValF.Text = $"{monMaxTempFahr}°F";
+                        labMonSpeedVal.Text = $"{Info.daily.wind_speed_10m_max[0]}{Info.daily_units.wind_speed_10m_max}";
+                        labMonPrecipitationVal.Text = $"{Info.daily.precipitation_sum[0]}{Info.daily_units.precipitation_sum}, {Info.daily.precipitation_probability_max[0]}{Info.daily_units.precipitation_probability_max}";
                         double tueTemp = Math.Round(Info.hourly.temperature_2m[25], 2);
                         double tueTempFahr = tueTemp * 1.8 + 32;
+                        double tueMinTemp = Math.Round(Info.daily.temperature_2m_min[1], 2);
+                        double tueMinTempFahr = monMinTemp * 1.8 + 32;
+                        double tueMaxTemp = Math.Round(Info.daily.temperature_2m_max[1], 2);
+                        double tueMaxTempFahr = monMaxTemp * 1.8 + 32;
+                        labTueSunriseVal.Text = $"{convertDateTime(Info.daily.sunrise[1])}";
+                        labTueSunsetVal.Text = $"{convertDateTime(Info.daily.sunset[1])}";
                         labTueTempVal.Text = $"{tueTemp}{Info.hourly_units.temperature_2m}";
                         labTueTempValF.Text = $"{tueTempFahr}°F";
+                        labTueMinTempVal.Text = $"{tueMinTemp}{Info.hourly_units.temperature_2m}";
+                        labTueMaxTempVal.Text = $"{tueMaxTemp}{Info.hourly_units.temperature_2m}";
+                        labTueMinTempValF.Text = $"{tueMinTempFahr}°F";
+                        labTueMaxTempValF.Text = $"{tueMaxTempFahr}°F";
+                        labTueSpeedVal.Text = $"{Info.daily.wind_speed_10m_max[1]}{Info.daily_units.wind_speed_10m_max}";
+                        labTuePrecipitationVal.Text = $"{Info.daily.precipitation_sum[1]}{Info.daily_units.precipitation_sum}, {Info.daily.precipitation_probability_max[1]}{Info.daily_units.precipitation_probability_max}";
                         double wedTemp = Math.Round(Info.hourly.temperature_2m[49], 2);
                         double wedTempFahr = wedTemp * 1.8 + 32;
+                        double wedMinTemp = Math.Round(Info.daily.temperature_2m_min[2], 2);
+                        double wedMinTempFahr = monMinTemp * 1.8 + 32;
+                        double wedMaxTemp = Math.Round(Info.daily.temperature_2m_max[2], 2);
+                        double wedMaxTempFahr = monMaxTemp * 1.8 + 32;
+                        labWedSunriseVal.Text = $"{convertDateTime(Info.daily.sunrise[2])}";
+                        labWedSunsetVal.Text = $"{convertDateTime(Info.daily.sunset[2])}";
                         labWedTempVal.Text = $"{wedTemp}{Info.hourly_units.temperature_2m}";
                         labWedTempValF.Text = $"{wedTempFahr}°F";
+                        labWedMinTempVal.Text = $"{wedMinTemp}{Info.hourly_units.temperature_2m}";
+                        labWedMaxTempVal.Text = $"{wedMaxTemp}{Info.hourly_units.temperature_2m}";
+                        labWedMinTempValF.Text = $"{wedMinTempFahr}°F";
+                        labWedMaxTempValF.Text = $"{wedMaxTempFahr}°F";
+                        labWedSpeedVal.Text = $"{Info.daily.wind_speed_10m_max[2]}{Info.daily_units.wind_speed_10m_max}";
+                        labWedPrecipitationVal.Text = $"{Info.daily.precipitation_sum[2]}{Info.daily_units.precipitation_sum}, {Info.daily.precipitation_probability_max[2]}{Info.daily_units.precipitation_probability_max}";
                         double thuTemp = Math.Round(Info.hourly.temperature_2m[74], 2);
                         double thuTempFahr = thuTemp * 1.8 + 32;
+                        double thuMinTemp = Math.Round(Info.daily.temperature_2m_min[3], 2);
+                        double thuMinTempFahr = monMinTemp * 1.8 + 32;
+                        double thuMaxTemp = Math.Round(Info.daily.temperature_2m_max[3], 2);
+                        double thuMaxTempFahr = monMaxTemp * 1.8 + 32;
+                        labThuSunriseVal.Text = $"{convertDateTime(Info.daily.sunrise[3])}";
+                        labThuSunsetVal.Text = $"{convertDateTime(Info.daily.sunset[3])}";
                         labThuTempVal.Text = $"{thuTemp}{Info.hourly_units.temperature_2m}";
                         labThuTempValF.Text = $"{thuTempFahr}°F";
+                        labThuMinTempVal.Text = $"{thuMinTemp}{Info.hourly_units.temperature_2m}";
+                        labThuMaxTempVal.Text = $"{thuMaxTemp}{Info.hourly_units.temperature_2m}";
+                        labThuMinTempValF.Text = $"{thuMinTempFahr}°F";
+                        labThuMaxTempValF.Text = $"{thuMaxTempFahr}°F";
+                        labThuSpeedVal.Text = $"{Info.daily.wind_speed_10m_max[3]}{Info.daily_units.wind_speed_10m_max}";
+                        labThuPrecipitationVal.Text = $"{Info.daily.precipitation_sum[3]}{Info.daily_units.precipitation_sum}, {Info.daily.precipitation_probability_max[3]}{Info.daily_units.precipitation_probability_max}";
                         double friTemp = Math.Round(Info.hourly.temperature_2m[99], 2);
                         double friTempFahr = friTemp * 1.8 + 32;
+                        double friMinTemp = Math.Round(Info.daily.temperature_2m_min[4], 2);
+                        double friMinTempFahr = monMinTemp * 1.8 + 32;
+                        double friMaxTemp = Math.Round(Info.daily.temperature_2m_max[4], 2);
+                        double friMaxTempFahr = monMaxTemp * 1.8 + 32;
+                        labFriSunriseVal.Text = $"{convertDateTime(Info.daily.sunrise[4])}";
+                        labFriSunsetVal.Text = $"{convertDateTime(Info.daily.sunset[4])}";
                         labFriTempVal.Text = $"{friTemp}{Info.hourly_units.temperature_2m}";
                         labFriTempValF.Text = $"{friTempFahr}°F";
+                        labFriMinTempVal.Text = $"{friMinTemp}{Info.hourly_units.temperature_2m}";
+                        labFriMaxTempVal.Text = $"{friMaxTemp}{Info.hourly_units.temperature_2m}";
+                        labFriMinTempValF.Text = $"{friMinTempFahr}°F";
+                        labFriMaxTempValF.Text = $"{friMaxTempFahr}°F";
+                        labFriSpeedVal.Text = $"{Info.daily.wind_speed_10m_max[4]}{Info.daily_units.wind_speed_10m_max}";
+                        labFriPrecipitationVal.Text = $"{Info.daily.precipitation_sum[4]}{Info.daily_units.precipitation_sum}, {Info.daily.precipitation_probability_max[4]}{Info.daily_units.precipitation_probability_max}";
                         double satTemp = Math.Round(Info.hourly.temperature_2m[124], 2);
                         double satTempFahr = satTemp * 1.8 + 32;
+                        double satMinTemp = Math.Round(Info.daily.temperature_2m_min[5], 2);
+                        double satMinTempFahr = monMinTemp * 1.8 + 32;
+                        double satMaxTemp = Math.Round(Info.daily.temperature_2m_max[5], 2);
+                        double satMaxTempFahr = monMaxTemp * 1.8 + 32;
+                        labSatSunriseVal.Text = $"{convertDateTime(Info.daily.sunrise[5])}";
+                        labSatSunsetVal.Text = $"{convertDateTime(Info.daily.sunset[5])}";
                         labSatTempVal.Text = $"{satTemp}{Info.hourly_units.temperature_2m}";
                         labSatTempValF.Text = $"{satTempFahr}°F";
+                        labSatMinTempVal.Text = $"{satMinTemp}{Info.hourly_units.temperature_2m}";
+                        labSatMaxTempVal.Text = $"{satMaxTemp}{Info.hourly_units.temperature_2m}";
+                        labSatMinTempValF.Text = $"{satMinTempFahr}°F";
+                        labSatMaxTempValF.Text = $"{satMaxTempFahr}°F";
+                        labSatSpeedVal.Text = $"{Info.daily.wind_speed_10m_max[5]}{Info.daily_units.wind_speed_10m_max}";
+                        labSatPrecipitationVal.Text = $"{Info.daily.precipitation_sum[5]}{Info.daily_units.precipitation_sum}, {Info.daily.precipitation_probability_max[5]}{Info.daily_units.precipitation_probability_max}";
                         double sunTemp = Math.Round(Info.hourly.temperature_2m[149], 2);
                         double sunTempFahr = sunTemp * 1.8 + 32;
+                        double sunMinTemp = Math.Round(Info.daily.temperature_2m_min[6], 2);
+                        double sunMinTempFahr = monMinTemp * 1.8 + 32;
+                        double sunMaxTemp = Math.Round(Info.daily.temperature_2m_max[6], 2);
+                        double sunMaxTempFahr = monMaxTemp * 1.8 + 32;
+                        labSunSunriseVal.Text = $"{convertDateTime(Info.daily.sunrise[6])}";
+                        labSunSunsetVal.Text = $"{convertDateTime(Info.daily.sunset[6])}";
                         labSunTempVal.Text = $"{sunTemp}{Info.hourly_units.temperature_2m}";
                         labSunTempValF.Text = $"{sunTempFahr}°F";
-                        tabPageMonday.Text = convertDateTime(Info.daily.time[1]).DayOfWeek.ToString();
-                        tabPageTuesday.Text = convertDateTime(Info.daily.time[2]).DayOfWeek.ToString();
-                        tabPageWednesday.Text = convertDateTime(Info.daily.time[3]).DayOfWeek.ToString();
-                        tabPageThursday.Text = convertDateTime(Info.daily.time[4]).DayOfWeek.ToString();
-                        tabPageFriday.Text = convertDateTime(Info.daily.time[5]).DayOfWeek.ToString();
-                        tabPageSaturday.Text = convertDateTime(Info.daily.time[6]).DayOfWeek.ToString();
-                        tabPageSunday.Text = convertDateTime(Info.daily.time[0]).DayOfWeek.ToString();
+                        labSunMinTempVal.Text = $"{sunMinTemp}{Info.hourly_units.temperature_2m}";
+                        labSunMaxTempVal.Text = $"{sunMaxTemp}{Info.hourly_units.temperature_2m}";
+                        labSunMinTempValF.Text = $"{sunMinTempFahr}°F";
+                        labSunMaxTempValF.Text = $"{sunMaxTempFahr}°F";
+                        labSunSpeedVal.Text = $"{Info.daily.wind_speed_10m_max[6]}{Info.daily_units.wind_speed_10m_max}";
+                        labSunPrecipitationVal.Text = $"{Info.daily.precipitation_sum[6]}{Info.daily_units.precipitation_sum}, {Info.daily.precipitation_probability_max[6]}{Info.daily_units.precipitation_probability_max}";
+
+
+                        //показваме седмица с начало днешен ден
+                        tabPageMonday.Text = convertDateTime(Info.daily.time[0] + 86400).DayOfWeek.ToString();
+                        tabPageTuesday.Text = convertDateTime(Info.daily.time[1] + 86400).DayOfWeek.ToString();
+                        tabPageWednesday.Text = convertDateTime(Info.daily.time[2] + 86400).DayOfWeek.ToString();
+                        tabPageThursday.Text = convertDateTime(Info.daily.time[3] + 86400).DayOfWeek.ToString();
+                        tabPageFriday.Text = convertDateTime(Info.daily.time[4] + 86400).DayOfWeek.ToString();
+                        tabPageSaturday.Text = convertDateTime(Info.daily.time[5] + 86400).DayOfWeek.ToString();
+                        tabPageSunday.Text = convertDateTime(Info.daily.time[6] + 86400).DayOfWeek.ToString();
+
+
+
+                        UserControl1 FUCK;
+                        for (int i = 1; i < 25; i++)
+                        {
+                            FUCK = new UserControl1();
+                            FUCK.labUCTime.Text = $"{convertDateTime(Info.hourly.time[i]).Day} {convertDateTime(Info.hourly.time[i]).TimeOfDay}";
+                            double UCTime = Math.Round(Info.hourly.temperature_2m[i], 2);
+                            double UCTimeF = UCTime * 1.8 + 32;
+                            FUCK.labUCTemp.Text = $"{UCTime}{Info.hourly_units.temperature_2m}";
+                            FUCK.labUCTempF.Text = $"{UCTimeF}°F";
+                            FUCK.labUCPrecipitation.Text = $"{Info.hourly.precipitation_probability[i]}{Info.hourly_units.precipitation_probability}";
+                            
+                            monFLP.Controls.Add( FUCK );
+                        }
+                        for (int i = 25; i < 49; i++)
+                        {
+                            FUCK = new UserControl1();
+                            FUCK.labUCTime.Text = $"{convertDateTime(Info.hourly.time[i]).Day} {convertDateTime(Info.hourly.time[i]).TimeOfDay}";
+                            double UCTime = Math.Round(Info.hourly.temperature_2m[i], 2);
+                            double UCTimeF = UCTime * 1.8 + 32;
+                            FUCK.labUCTemp.Text = $"{UCTime}{Info.hourly_units.temperature_2m}";
+                            FUCK.labUCTempF.Text = $"{UCTimeF}°F";
+                            FUCK.labUCPrecipitation.Text = $"{Info.hourly.precipitation_probability[i]}{Info.hourly_units.precipitation_probability}";
+
+                            tueFLP.Controls.Add(FUCK);
+                        }
+
+
 
                     }
                     catch (Exception ex)
@@ -236,6 +353,21 @@ namespace WeatherApp
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labTempTuesday_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPageThursday_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabControl2_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
