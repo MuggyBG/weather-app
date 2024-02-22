@@ -102,3 +102,4 @@ C:\Users\elkat\source\repos\ASD_12V_N11\WeatherApp\WeatherApp\obj\Debug\net6.0-w
 C:\Users\elkat\source\repos\ASD_12V_N11\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.genruntimeconfig.cache
 C:\Users\elkat\source\repos\ASD_12V_N11\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\ref\WeatherApp.dll
 C:\Users\elkat\source\repos\ASD_12V_N11\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.UserControl1.resources
+C:\Users\elkat\source\repos\ASD_12V_N11\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.sourcelink.json

@@ -642,7 +642,6 @@
             tueFLP.Size = new Size(624, 186);
             tueFLP.TabIndex = 94;
             tueFLP.WrapContents = false;
-            tueFLP.Paint += tueFLP_Paint;
             // 
             // labTuePrecipitation
             // 

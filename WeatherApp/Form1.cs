@@ -269,7 +269,9 @@ namespace WeatherApp
                         for (int i = 1; i < 25; i++)
                         {
                             FUK = new UserControl1();
-                            FUK.labUCTime.Text = $"{convertDateTime(Info.hourly.time[i])} {convertDateTime(Info.hourly.time[i]).TimeOfDay}";
+                            string theTimeIsNow = convertDateTime(Info.hourly.time[i]).ToString("HH:mm");
+                            string theDayIsNow = convertDateTime(Info.hourly.time[i]).ToString("dd MMM");
+                            FUK.labUCTime.Text = $"{theDayIsNow} {theTimeIsNow}ч.";
                             double UCTime = Math.Round(Info.hourly.temperature_2m[i], 2);
                             double UCTimeF = Math.Round(Info.hourly.temperature_2m[i] * 1.8 + 32, 1);
                             FUK.labUCTemp.Text = $"{UCTime}{Info.hourly_units.temperature_2m}";
@@ -281,7 +283,9 @@ namespace WeatherApp
                         for (int i = 25; i < 49; i++)
                         {
                             FUK = new UserControl1();
-                            FUK.labUCTime.Text = $"{convertDateTime(Info.hourly.time[i])} {convertDateTime(Info.hourly.time[i]).TimeOfDay}";
+                            string theTimeIsNow = convertDateTime(Info.hourly.time[i]).ToString("HH:mm");
+                            string theDayIsNow = convertDateTime(Info.hourly.time[i]).ToString("dd MMM");
+                            FUK.labUCTime.Text = $"{theDayIsNow} {theTimeIsNow}ч.";
                             double UCTime = Math.Round(Info.hourly.temperature_2m[i], 2);
                             double UCTimeF = Math.Round(Info.hourly.temperature_2m[i] * 1.8 + 32, 1);
                             FUK.labUCTemp.Text = $"{UCTime}{Info.hourly_units.temperature_2m}";
@@ -293,7 +297,9 @@ namespace WeatherApp
                         for (int i = 49; i < 73; i++)
                         {
                             FUK = new UserControl1();
-                            FUK.labUCTime.Text = $"{convertDateTime(Info.hourly.time[i])} {convertDateTime(Info.hourly.time[i]).TimeOfDay}";
+                            string theTimeIsNow = convertDateTime(Info.hourly.time[i]).ToString("HH:mm");
+                            string theDayIsNow = convertDateTime(Info.hourly.time[i]).ToString("dd MMM");
+                            FUK.labUCTime.Text = $"{theDayIsNow} {theTimeIsNow}ч.";
                             double UCTime = Math.Round(Info.hourly.temperature_2m[i], 2);
                             double UCTimeF = Math.Round(Info.hourly.temperature_2m[i] * 1.8 + 32, 1);
                             FUK.labUCTemp.Text = $"{UCTime}{Info.hourly_units.temperature_2m}";
@@ -305,7 +311,9 @@ namespace WeatherApp
                         for (int i = 73; i < 97; i++)
                         {
                             FUK = new UserControl1();
-                            FUK.labUCTime.Text = $"{convertDateTime(Info.hourly.time[i])} {convertDateTime(Info.hourly.time[i]).TimeOfDay}";
+                            string theTimeIsNow = convertDateTime(Info.hourly.time[i]).ToString("HH:mm");
+                            string theDayIsNow = convertDateTime(Info.hourly.time[i]).ToString("dd MMM");
+                            FUK.labUCTime.Text = $"{theDayIsNow} {theTimeIsNow}ч.";
                             double UCTime = Math.Round(Info.hourly.temperature_2m[i], 2);
                             double UCTimeF = Math.Round(Info.hourly.temperature_2m[i] * 1.8 + 32, 1);
                             FUK.labUCTemp.Text = $"{UCTime}{Info.hourly_units.temperature_2m}";
@@ -318,7 +326,9 @@ namespace WeatherApp
                         for (int i = 97; i < 121; i++)
                         {
                             FUK = new UserControl1();
-                            FUK.labUCTime.Text = $"{convertDateTime(Info.hourly.time[i])} {convertDateTime(Info.hourly.time[i]).TimeOfDay}";
+                            string theTimeIsNow = convertDateTime(Info.hourly.time[i]).ToString("HH:mm");
+                            string theDayIsNow = convertDateTime(Info.hourly.time[i]).ToString("dd MMM");
+                            FUK.labUCTime.Text = $"{theDayIsNow} {theTimeIsNow}ч.";
                             double UCTime = Math.Round(Info.hourly.temperature_2m[i], 2);
                             double UCTimeF = Math.Round(Info.hourly.temperature_2m[i] * 1.8 + 32, 1);
                             FUK.labUCTemp.Text = $"{UCTime}{Info.hourly_units.temperature_2m}";
@@ -331,7 +341,9 @@ namespace WeatherApp
                         for (int i = 121; i < 145; i++)
                         {
                             FUK = new UserControl1();
-                            FUK.labUCTime.Text = $"{convertDateTime(Info.hourly.time[i])} {convertDateTime(Info.hourly.time[i]).TimeOfDay}";
+                            string theTimeIsNow = convertDateTime(Info.hourly.time[i]).ToString("HH:mm");
+                            string theDayIsNow = convertDateTime(Info.hourly.time[i]).ToString("dd MMM");
+                            FUK.labUCTime.Text = $"{theDayIsNow} {theTimeIsNow}ч.";
                             double UCTime = Math.Round(Info.hourly.temperature_2m[i], 2);
                             double UCTimeF = Math.Round(Info.hourly.temperature_2m[i] * 1.8 + 32, 1);
                             FUK.labUCTemp.Text = $"{UCTime}{Info.hourly_units.temperature_2m}";
@@ -344,7 +356,9 @@ namespace WeatherApp
                         for (int i = 145; i < 167; i++)
                         {
                             FUK = new UserControl1();
-                            FUK.labUCTime.Text = $"{convertDateTime(Info.hourly.time[i])} {convertDateTime(Info.hourly.time[i]).TimeOfDay}";
+                            string theTimeIsNow = convertDateTime(Info.hourly.time[i]).ToString("HH:mm");
+                            string theDayIsNow = convertDateTime(Info.hourly.time[i]).ToString("dd MMM");
+                            FUK.labUCTime.Text = $"{theDayIsNow} {theTimeIsNow}ч.";
                             double UCTime = Math.Round(Info.hourly.temperature_2m[i], 2);
                             double UCTimeF = Math.Round(Info.hourly.temperature_2m[i] * 1.8 + 32, 1);
                             FUK.labUCTemp.Text = $"{UCTime}{Info.hourly_units.temperature_2m}";
@@ -358,7 +372,7 @@ namespace WeatherApp
                     }
                     catch (Exception ex)
                     {
-                        labForecastError.Text = "Имаше проблем при взимането на данни за прогноза.";
+                        labForecastError.Text = "Имаше проблем при вземането на данни за прогноза.";
 
                     }
                 }
