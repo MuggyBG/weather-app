@@ -20,7 +20,7 @@ namespace WeatherApp
         {
             InitializeComponent();
         }
-        //променливи за API ключ, език и мярка
+        //променливи за API ключ, език и мярка към OpenWeatherMap 
         string APIKey = "3c0be927681b790ee0c45c665d362e83";
         string language = "bg";
         string units = "metric";
@@ -49,7 +49,7 @@ namespace WeatherApp
         {
 
         }
-
+        //пускане на метода за вземане на актуални метеорологични данни при натискане на бутона. 
         private async void btnSearch_Click(object sender, EventArgs e)
         {
             await currentWeather();
@@ -57,7 +57,7 @@ namespace WeatherApp
         }
         float lon;
         float lat;
-
+        //метода за вземане на актуални метеорологични данни от OpenWeatherMap
         async Task currentWeather()
         {
             //създаваме нов HttpClient, за вземане на данни от API
@@ -66,13 +66,14 @@ namespace WeatherApp
 
 
 
-                //даваме url за API Call
+                //даваме стринг url за API Call
                 string url = string.Format($"https://api.openweathermap.org/data/2.5/weather?q={City.Text}&units={units}&lang={language}&appid={APIKey}");
                 //изпращаме резултата към променлива json
+                //използваме try, за да можем да хванем проблеми при изпълнението
                 try
                 {
                     var json = await client.GetStringAsync(url);
-
+                    //Десериализираме JSON-форматираната информация и резултата се запазва в променлива Info
                     WeatherInfo.Rootobject Info = JsonConvert.DeserializeObject<WeatherInfo.Rootobject>(json);
                     //правим стринг за място на снимката
                     string imgUrl = "http://openweathermap.org/img/w/" + Info.weather[0].icon + ".png";
@@ -81,8 +82,8 @@ namespace WeatherApp
                     double temprature = Info.main.temp;
                     double tempratureFahrenheit = temprature * 1.8 + 32;
                     //показване на температура, температура фаренхайт, време, детайли, време на изгрев и залез, вятърна скорост и налягане
-                    labTempValue.Text = $"{Math.Round(temprature)}°C";
-                    labTempFahr.Text = $"{Math.Round(tempratureFahrenheit)}°F";
+                    labTempValue.Text = $"{Math.Round(temprature, 2)}°C";
+                    labTempFahr.Text = $"{Math.Round(tempratureFahrenheit, 2)}°F";
                     labCondition.Text = Info.weather[0].main;
                     labDetails.Text = Info.weather[0].description.ToUpper();
                     labSunsetValue.Text = $"{convertDateTime(Info.sys.sunset)} UTC+2";
@@ -94,52 +95,59 @@ namespace WeatherApp
                     double maxTempC = Info.main.temp_max;
                     double minTempFahr = minTempC * 1.8 + 32;
                     double maxTempFahr = maxTempC * 1.8 + 32;
-                    //показване на мин макс темп
-                    labMinTempValue.Text = $"{Math.Round(minTempC)}°C";
-                    labMaxTempValue.Text = $"{Math.Round(maxTempC)}°C";
-                    labMinTempFahr.Text = $"{Math.Round(minTempFahr)}°F";
-                    labMaxTempFahr.Text = $"{Math.Round(maxTempFahr)}°F";
+                    //показване на мин макс темп и усещането на времето
+                    labMinTempValue.Text = $"{Math.Round(minTempC, 2)}°C";
+                    labMaxTempValue.Text = $"{Math.Round(maxTempC, 2)}°C";
+                    labMinTempFahr.Text = $"{Math.Round(minTempFahr, 2)}°F";
+                    labMaxTempFahr.Text = $"{Math.Round(maxTempFahr, 2)}°F";
                     double feelsLikeC = Info.main.feels_like;
-                    labFeelsLikeValue.Text = $"{Math.Round(feelsLikeC)}°C";
+                    labFeelsLikeValue.Text = $"{Math.Round(feelsLikeC, 2)}°C";
                     double feelsLikeFahr = feelsLikeC * 1.8 + 32;
-                    labFeelsLikeFahr.Text = $"{Math.Round(feelsLikeFahr)}°F";
+                    labFeelsLikeFahr.Text = $"{Math.Round(feelsLikeFahr, 2)}°F";
                     //код на държавата, за която гледаме времето
+                    //след това, изшращаме longtitude и latitude стойности към променливите lon и lat, за да можем да изпратим тази информация към друг API Open-Meteo
                     labCountry.Text = Info.sys.country.ToString();
                     lon = Info.coord.lon;
                     lat = Info.coord.lat;
+                    //скриваме label-а за грешка, защото иначе седи върху друг label за сегашното време
                     labErrorWeather.Hide();
+                    //показваме сегашното време и време на последна актуализация на информацията от API. 
                     labDateTime.Text = $"{convertDateTime(Info.dt)} UTC+2";
                     labLocalTime.Text = $"Сегашно време: {DateTime.Now}";
+                    //стартираме функция за вземане на прогнозните данни 
                     await getForecast();
                 }
+                //хващаме грешки и при такива, копазваме label за грешка и започваме таймер да скрием лейбъла след 5 секунди.
                 catch (Exception ex)
                 {
                     labDateTime.Hide();
                     labErrorWeather.Show();
-                    labErrorWeather.Text = String.Format("Грешка, моля проверете написаното и опитайте отново.");
+                    labErrorWeather.Text = "Грешка, моля проверете написаното и опитайте отново.";
                     timerErrorWeather.Start();
                 }
 
             }
 
         }
-
+        //метод за прогнозни данни
         async Task getForecast()
         {
             //създаваме нов HttpClient, за вземане на данни от друг API за прогноза
             using (var client = new HttpClient())
             {
-
-
                 {
-                    //даваме url за API Call
-                    string url = string.Format($"https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={lon}&hourly=temperature_2m,precipitation_probability,precipitation,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_hours,sunrise,sunset,wind_speed_10m_max,precipitation_probability_max&timeformat=unixtime&timezone=Europe%2FMoscow");
+                    //даваме url за API Call, в който използваме променливите за географска дължина и географска ширина lon и lat. 
+                    string url = string.Format($"https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={lon}&hourly=temperature_2m,precipitation_probability" +
+                        $",precipitation,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_hours,sunrise,sunset" +
+                        $",wind_speed_10m_max,precipitation_probability_max&timeformat=unixtime&timezone=Europe%2FMoscow");
                     //изпращаме резултата към променлива json
+                    //пак използваме try, за да можем да хванем грешки
                     try
                     {
                         var json = await client.GetStringAsync(url);
+                        //пак използваме десериализираните данни към променлива Info
                         ForecastInfo.Rootobject Info = JsonConvert.DeserializeObject<ForecastInfo.Rootobject>(json);
-                        // Дневна прогноза
+                        // Информацията на сегашния ден 1 - температура, изгрев/залез, скорост на вятъра и атмосферно налягане.
                         double monTemp = Math.Round(Info.hourly.temperature_2m[0], 2);
                         double monTempFahr = Math.Round(Info.hourly.temperature_2m[0] * 1.8 + 32, 1);
                         double monMinTemp = Math.Round(Info.daily.temperature_2m_min[0], 2);
@@ -156,6 +164,7 @@ namespace WeatherApp
                         labMonMaxTempValF.Text = $"{monMaxTempFahr}°F";
                         labMonSpeedVal.Text = $"{Info.daily.wind_speed_10m_max[0]}{Info.daily_units.wind_speed_10m_max}";
                         labMonPrecipitationVal.Text = $"{Info.daily.precipitation_sum[0]}{Info.daily_units.precipitation_sum}, {Info.daily.precipitation_probability_max[0]}{Info.daily_units.precipitation_probability_max}";
+                        // Информация за ден 2 
                         double tueTemp = Math.Round(Info.hourly.temperature_2m[25], 2);
                         double tueTempFahr = Math.Round(Info.hourly.temperature_2m[25] * 1.8 + 32, 1);
                         double tueMinTemp = Math.Round(Info.daily.temperature_2m_min[1], 2);
@@ -172,6 +181,7 @@ namespace WeatherApp
                         labTueMaxTempValF.Text = $"{tueMaxTempFahr}°F";
                         labTueSpeedVal.Text = $"{Info.daily.wind_speed_10m_max[1]}{Info.daily_units.wind_speed_10m_max}";
                         labTuePrecipitationVal.Text = $"{Info.daily.precipitation_sum[1]}{Info.daily_units.precipitation_sum}, {Info.daily.precipitation_probability_max[1]}{Info.daily_units.precipitation_probability_max}";
+                        //информация за ден3 
                         double wedTemp = Math.Round(Info.hourly.temperature_2m[49], 2);
                         double wedTempFahr = Math.Round(Info.hourly.temperature_2m[49] * 1.8 + 32, 1);
                         double wedMinTemp = Math.Round(Info.daily.temperature_2m_min[2], 2);
@@ -188,6 +198,7 @@ namespace WeatherApp
                         labWedMaxTempValF.Text = $"{wedMaxTempFahr}°F";
                         labWedSpeedVal.Text = $"{Info.daily.wind_speed_10m_max[2]}{Info.daily_units.wind_speed_10m_max}";
                         labWedPrecipitationVal.Text = $"{Info.daily.precipitation_sum[2]}{Info.daily_units.precipitation_sum}, {Info.daily.precipitation_probability_max[2]}{Info.daily_units.precipitation_probability_max}";
+                        //информация за ден4
                         double thuTemp = Math.Round(Info.hourly.temperature_2m[74], 2);
                         double thuTempFahr = Math.Round(Info.hourly.temperature_2m[74] * 1.8 + 32, 1);
                         double thuMinTemp = Math.Round(Info.daily.temperature_2m_min[3], 2);
@@ -204,6 +215,7 @@ namespace WeatherApp
                         labThuMaxTempValF.Text = $"{thuMaxTempFahr}°F";
                         labThuSpeedVal.Text = $"{Info.daily.wind_speed_10m_max[3]}{Info.daily_units.wind_speed_10m_max}";
                         labThuPrecipitationVal.Text = $"{Info.daily.precipitation_sum[3]}{Info.daily_units.precipitation_sum}, {Info.daily.precipitation_probability_max[3]}{Info.daily_units.precipitation_probability_max}";
+                        //информация за ден5
                         double friTemp = Math.Round(Info.hourly.temperature_2m[99], 2);
                         double friTempFahr = Math.Round(Info.hourly.temperature_2m[99] * 1.8 + 32, 1);
                         double friMinTemp = Math.Round(Info.daily.temperature_2m_min[4], 2);
@@ -220,6 +232,7 @@ namespace WeatherApp
                         labFriMaxTempValF.Text = $"{friMaxTempFahr}°F";
                         labFriSpeedVal.Text = $"{Info.daily.wind_speed_10m_max[4]}{Info.daily_units.wind_speed_10m_max}";
                         labFriPrecipitationVal.Text = $"{Info.daily.precipitation_sum[4]}{Info.daily_units.precipitation_sum}, {Info.daily.precipitation_probability_max[4]}{Info.daily_units.precipitation_probability_max}";
+                        //информация за ден6
                         double satTemp = Math.Round(Info.hourly.temperature_2m[124], 2);
                         double satTempFahr = Math.Round(Info.hourly.temperature_2m[124] * 1.8 + 32, 1);
                         double satMinTemp = Math.Round(Info.daily.temperature_2m_min[5], 2);
@@ -236,6 +249,7 @@ namespace WeatherApp
                         labSatMaxTempValF.Text = $"{satMaxTempFahr}°F";
                         labSatSpeedVal.Text = $"{Info.daily.wind_speed_10m_max[5]}{Info.daily_units.wind_speed_10m_max}";
                         labSatPrecipitationVal.Text = $"{Info.daily.precipitation_sum[5]}{Info.daily_units.precipitation_sum}, {Info.daily.precipitation_probability_max[5]}{Info.daily_units.precipitation_probability_max}";
+                        //информация за ден 7
                         double sunTemp = Math.Round(Info.hourly.temperature_2m[149], 2);
                         double sunTempFahr = Math.Round(Info.hourly.temperature_2m[149] * 1.8 + 32, 1);
                         double sunMinTemp = Math.Round(Info.daily.temperature_2m_min[6], 2);
@@ -254,7 +268,7 @@ namespace WeatherApp
                         labSunPrecipitationVal.Text = $"{Info.daily.precipitation_sum[6]}{Info.daily_units.precipitation_sum}, {Info.daily.precipitation_probability_max[6]}{Info.daily_units.precipitation_probability_max}";
 
 
-                        //показваме седмица с начало днешен ден
+                        //сменяме името от placeholder дни към актуални за сегашния ден в седмицата имена.
                         tabPageMonday.Text = convertDateTime(Info.daily.time[0] + 86400).DayOfWeek.ToString();
                         tabPageTuesday.Text = convertDateTime(Info.daily.time[1] + 86400).DayOfWeek.ToString();
                         tabPageWednesday.Text = convertDateTime(Info.daily.time[2] + 86400).DayOfWeek.ToString();
@@ -264,22 +278,29 @@ namespace WeatherApp
                         tabPageSunday.Text = convertDateTime(Info.daily.time[6] + 86400).DayOfWeek.ToString();
 
 
+                        //правим usercontrol за 24-часова 7-дневна прогноза 
 
+                        
                         UserControl1 FUK;
+                        //for цикъл за първият ден
                         for (int i = 1; i < 25; i++)
                         {
                             FUK = new UserControl1();
+                            //показваме ден и час за показаната информация, деня е във формат (дата, месец с букви), а часа е във формат (час:минута)
                             string theTimeIsNow = convertDateTime(Info.hourly.time[i]).ToString("HH:mm");
                             string theDayIsNow = convertDateTime(Info.hourly.time[i]).ToString("dd MMM");
                             FUK.labUCTime.Text = $"{theDayIsNow} {theTimeIsNow}ч.";
+                            //температура
                             double UCTime = Math.Round(Info.hourly.temperature_2m[i], 2);
                             double UCTimeF = Math.Round(Info.hourly.temperature_2m[i] * 1.8 + 32, 1);
                             FUK.labUCTemp.Text = $"{UCTime}{Info.hourly_units.temperature_2m}";
                             FUK.labUCTempF.Text = $"{UCTimeF}°F";
+                            //час за валежи
                             FUK.labUCPrecipitation.Text = $"{Info.hourly.precipitation_probability[i]}{Info.hourly_units.precipitation_probability}";
-
+                            //добавяме нов usercontrol в flowlayout панела за всеки час от деня 24часа
                             monFLP.Controls.Add(FUK);
                         }
+                        //втори ден, където информацията е на място 25-49 в API Call
                         for (int i = 25; i < 49; i++)
                         {
                             FUK = new UserControl1();
@@ -294,6 +315,7 @@ namespace WeatherApp
 
                             tueFLP.Controls.Add(FUK);
                         }
+                        //трети ден, където информацията е на място 49-73 в API Call
                         for (int i = 49; i < 73; i++)
                         {
                             FUK = new UserControl1();
@@ -308,6 +330,7 @@ namespace WeatherApp
 
                             wedFLP.Controls.Add(FUK);
                         }
+                        //четвърти ден, където информацията е на място 73-97 в API Call
                         for (int i = 73; i < 97; i++)
                         {
                             FUK = new UserControl1();
@@ -322,7 +345,7 @@ namespace WeatherApp
 
                             thuFLP.Controls.Add(FUK);
                         }
-
+                        //пети ден, където информацията е на място 97-121 в API Call
                         for (int i = 97; i < 121; i++)
                         {
                             FUK = new UserControl1();
@@ -337,7 +360,7 @@ namespace WeatherApp
 
                             friFLP.Controls.Add(FUK);
                         }
-
+                        //шести ден, където информацията е на място 121-145 в API Call
                         for (int i = 121; i < 145; i++)
                         {
                             FUK = new UserControl1();
@@ -352,7 +375,7 @@ namespace WeatherApp
 
                             satFLP.Controls.Add(FUK);
                         }
-
+                        //седми ден, където информацията е на място 145-167 в API Call
                         for (int i = 145; i < 167; i++)
                         {
                             FUK = new UserControl1();
@@ -370,6 +393,7 @@ namespace WeatherApp
 
 
                     }
+                    //хващаме грешка при правенето на API Call-а към сайта. 
                     catch (Exception ex)
                     {
                         labForecastError.Text = "Имаше проблем при вземането на данни за прогноза.";
@@ -378,76 +402,20 @@ namespace WeatherApp
                 }
             }
         }
+        //методът, който използваме за да превърнем стойностите от универсален unixtime към разбираем формат 
         DateTime convertDateTime(long seconds)
         {
             DateTime day = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Local).ToLocalTime();
             day = day.AddSeconds(seconds).ToLocalTime().AddHours(2);
             return day;
         }
-
-        private void labMaxTempFahr_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labMinTempFahr_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void labFeelsLikeFahr_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void labTempFahr_Click(object sender, EventArgs e)
-        {
-        }
-
+        //таймер за скриване на съобщението за грешка след изминали 5 секунди от показване 
         private void timerErrorWeather_Tick(object sender, EventArgs e)
         {
             labErrorWeather.Hide();
             labDateTime.Show();
         }
-
-        private void btnForecast_Click(object sender, EventArgs e)
-        {
-            getForecast();
-        }
-
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labWindSpeedValue_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabPageTuesday_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labTempTuesday_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabPageThursday_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabControl2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        //таймер за скриване на съобщението за грешка след изминали 5 секунди от показване 
         private void timerForecastError_Tick(object sender, EventArgs e)
         {
             labForecastError.Hide();

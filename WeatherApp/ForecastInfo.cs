@@ -8,7 +8,7 @@ namespace WeatherApp
 {
     class ForecastInfo
     {
-
+        //данните за прогноза от Open-Meteo, направени в класове
         public class Rootobject
         {
             public float latitude { get; set; }

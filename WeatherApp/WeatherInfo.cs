@@ -8,6 +8,7 @@ namespace WeatherApp
 {
     class WeatherInfo
     {
+        //Данните за актуална метеорологична информация ьчот OpenWeatherMap, направени в класове
         public class Rootobject
         {
             public Coord coord { get; set; }

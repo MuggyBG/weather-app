@@ -346,7 +346,6 @@
             tabControl2.SelectedIndex = 0;
             tabControl2.Size = new Size(697, 481);
             tabControl2.TabIndex = 0;
-            tabControl2.SelectedIndexChanged += tabControl2_SelectedIndexChanged;
             // 
             // tabPageMonday
             // 
@@ -863,7 +862,6 @@
             labTempTuesday.Size = new Size(143, 28);
             labTempTuesday.TabIndex = 43;
             labTempTuesday.Text = "Температура:";
-            labTempTuesday.Click += labTempTuesday_Click;
             // 
             // tabPageWednesday
             // 
@@ -1148,7 +1146,6 @@
             tabPageThursday.TabIndex = 3;
             tabPageThursday.Text = "Четвъртък";
             tabPageThursday.UseVisualStyleBackColor = true;
-            tabPageThursday.Click += tabPageThursday_Click;
             // 
             // thuFLP
             // 
@@ -2185,7 +2182,6 @@
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Сегашно време";
             tabPage1.UseVisualStyleBackColor = true;
-            tabPage1.Click += tabPage1_Click;
             // 
             // labWindSpeed
             // 
@@ -2212,7 +2208,6 @@
             labWindSpeedValue.Size = new Size(53, 28);
             labWindSpeedValue.TabIndex = 27;
             labWindSpeedValue.Text = "N/A";
-            labWindSpeedValue.Click += labWindSpeedValue_Click;
             // 
             // labPressure
             // 
@@ -2265,7 +2260,7 @@
             labFeelsLikeFahr.Size = new Size(34, 18);
             labFeelsLikeFahr.TabIndex = 40;
             labFeelsLikeFahr.Text = "N/A";
-            labFeelsLikeFahr.Click += labFeelsLikeFahr_Click;
+            
             // 
             // labMinTempFahr
             // 
@@ -2279,7 +2274,6 @@
             labMinTempFahr.Size = new Size(34, 18);
             labMinTempFahr.TabIndex = 42;
             labMinTempFahr.Text = "N/A";
-            labMinTempFahr.Click += labMinTempFahr_Click;
             // 
             // labTempFahr
             // 
@@ -2293,7 +2287,6 @@
             labTempFahr.Size = new Size(34, 18);
             labTempFahr.TabIndex = 39;
             labTempFahr.Text = "N/A";
-            labTempFahr.Click += labTempFahr_Click;
             // 
             // labTempValue
             // 
@@ -2358,7 +2351,6 @@
             labMaxTempFahr.Size = new Size(34, 18);
             labMaxTempFahr.TabIndex = 41;
             labMaxTempFahr.Text = "N/A";
-            labMaxTempFahr.Click += labMaxTempFahr_Click;
             // 
             // labFeelsLike
             // 
@@ -2513,7 +2505,6 @@
             tabControl1.SelectedIndex = 0;
             tabControl1.Size = new Size(896, 564);
             tabControl1.TabIndex = 47;
-            tabControl1.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
             // 
             // timerForecastError
             // 
