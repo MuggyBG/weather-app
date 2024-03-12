@@ -38,7 +38,6 @@
             labLocalTime = new Label();
             labErrorWeather = new Label();
             timerErrorWeather = new System.Windows.Forms.Timer(components);
-            labErrorForecast = new Label();
             tabPage2 = new TabPage();
             labForecastError = new Label();
             tabControl2 = new TabControl();
@@ -297,18 +296,6 @@
             // 
             timerErrorWeather.Interval = 5000;
             timerErrorWeather.Tick += timerErrorWeather_Tick;
-            // 
-            // labErrorForecast
-            // 
-            labErrorForecast.AutoSize = true;
-            labErrorForecast.BackColor = Color.Transparent;
-            labErrorForecast.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            labErrorForecast.ForeColor = Color.Red;
-            labErrorForecast.Location = new Point(36, 692);
-            labErrorForecast.Margin = new Padding(4, 0, 4, 0);
-            labErrorForecast.Name = "labErrorForecast";
-            labErrorForecast.Size = new Size(0, 27);
-            labErrorForecast.TabIndex = 46;
             // 
             // tabPage2
             // 
@@ -625,10 +612,10 @@
             tabPageTuesday.Controls.Add(labTueTempValF);
             tabPageTuesday.Controls.Add(labTueTempVal);
             tabPageTuesday.Controls.Add(labTempTuesday);
-            tabPageTuesday.Location = new Point(4, 37);
+            tabPageTuesday.Location = new Point(4, 29);
             tabPageTuesday.Name = "tabPageTuesday";
             tabPageTuesday.Padding = new Padding(3);
-            tabPageTuesday.Size = new Size(689, 440);
+            tabPageTuesday.Size = new Size(689, 448);
             tabPageTuesday.TabIndex = 1;
             tabPageTuesday.Text = "Вторник";
             tabPageTuesday.UseVisualStyleBackColor = true;
@@ -2260,7 +2247,6 @@
             labFeelsLikeFahr.Size = new Size(34, 18);
             labFeelsLikeFahr.TabIndex = 40;
             labFeelsLikeFahr.Text = "N/A";
-            
             // 
             // labMinTempFahr
             // 
@@ -2522,7 +2508,6 @@
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1271, 639);
             Controls.Add(tabControl1);
-            Controls.Add(labErrorForecast);
             Controls.Add(labErrorWeather);
             Controls.Add(labLocalTime);
             Controls.Add(labCountry);
@@ -2571,7 +2556,6 @@
         private Label labLocalTime;
         private Label labErrorWeather;
         private System.Windows.Forms.Timer timerErrorWeather;
-        private Label labErrorForecast;
         private TabPage tabPage2;
         private TabControl tabControl2;
         private TabPage tabPageMonday;

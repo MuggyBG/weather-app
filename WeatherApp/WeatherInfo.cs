@@ -8,7 +8,7 @@ namespace WeatherApp
 {
     class WeatherInfo
     {
-        //Данните за актуална метеорологична информация ьчот OpenWeatherMap, направени в класове
+        //Данните за актуална метеорологична информация от OpenWeatherMap, направени в класове
         public class Rootobject
         {
             public Coord coord { get; set; }
@@ -17,7 +17,7 @@ namespace WeatherApp
             public Main main { get; set; }
             public int visibility { get; set; }
             public Wind wind { get; set; }
-            public Clouds clouds { get; set; }
+            public Clouds? clouds { get; set; }
             public int dt { get; set; }
             public Sys sys { get; set; }
             public int timezone { get; set; }
