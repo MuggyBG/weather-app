@@ -227,7 +227,6 @@
             labCity.Size = new Size(69, 28);
             labCity.TabIndex = 0;
             labCity.Text = "Град: ";
-            labCity.Click += label1_Click;
             // 
             // City
             // 
@@ -2427,7 +2426,6 @@
             labDetails.Size = new Size(67, 28);
             labDetails.TabIndex = 3;
             labDetails.Text = "Още: ";
-            labDetails.Click += labDetails_Click;
             // 
             // labSunrise
             // 
@@ -2440,9 +2438,7 @@
             labSunrise.Name = "labSunrise";
             labSunrise.Size = new Size(77, 28);
             labSunrise.TabIndex = 4;
-            labSunrise.Text = "Изгрев";
-            labSunrise.Click += labSunrise_Click;
-            // 
+                // 
             // labSunset
             // 
             labSunset.AutoSize = true;

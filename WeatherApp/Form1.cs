@@ -138,7 +138,8 @@ namespace WeatherApp
                     labMonMinTempValF.Text = $"{monMinTempFahr}°F";
                     labMonMaxTempValF.Text = $"{monMaxTempFahr}°F";
                     labMonSpeedVal.Text = $"{Info.daily.wind_speed_10m_max[0]}{Info.daily_units.wind_speed_10m_max}";
-                    labMonPrecipitationVal.Text = $"{Info.daily.precipitation_sum[0]}{Info.daily_units.precipitation_sum}, {Info.daily.precipitation_probability_max[0]}{Info.daily_units.precipitation_probability_max}";
+                    labMonPrecipitationVal.Text = $"{Info.daily.precipitation_sum[0]}{Info.daily_units.precipitation_sum}, " +
+                        $"{Info.daily.precipitation_probability_max[0]}{Info.daily_units.precipitation_probability_max}";
                     // Информация за ден 2 
                     double tueTemp = Math.Round(Info.hourly.temperature_2m[25], 2);
                     double tueTempFahr = Math.Round(Info.hourly.temperature_2m[25] * 1.8 + 32, 1);
@@ -253,7 +254,7 @@ namespace WeatherApp
                     tabPageSunday.Text = convertDateTime(Info.daily.time[6] + 86400).DayOfWeek.ToString();
 
 
-                    //правим usercontrol за 24-часова 7-дневна прогноза 
+                    //правим usercontrol за 24-часова 7-дневна прогноза, заедно с променливи за UserControl класа.
                     UserControl1 FUK;
                     string theTimeIsNow;
                     string theDayIsNow;
