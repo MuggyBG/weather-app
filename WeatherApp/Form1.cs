@@ -208,7 +208,7 @@ namespace WeatherApp
                     labFriMaxTempValF.Text = $"{friMaxTempFahr}°F";
                     labFriSpeedVal.Text = $"{Info.daily.wind_speed_10m_max[4]}{Info.daily_units.wind_speed_10m_max}";
                     labFriPrecipitationVal.Text = $"{Info.daily.precipitation_sum[4]}{Info.daily_units.precipitation_sum}, {Info.daily.precipitation_probability_max[4]}{Info.daily_units.precipitation_probability_max}";
-                    //информация за ден6
+                    //информация за ден 6
                     double satTemp = Math.Round(Info.hourly.temperature_2m[124], 2);
                     double satTempFahr = Math.Round(Info.hourly.temperature_2m[124] * 1.8 + 32, 1);
                     double satMinTemp = Math.Round(Info.daily.temperature_2m_min[5], 2);
