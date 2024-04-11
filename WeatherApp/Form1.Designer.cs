@@ -201,6 +201,7 @@
             labSunsetValue = new Label();
             tabControl1 = new TabControl();
             timerForecastError = new System.Windows.Forms.Timer(components);
+            label1 = new Label();
             tabPage2.SuspendLayout();
             tabControl2.SuspendLayout();
             tabPageMonday.SuspendLayout();
@@ -2137,6 +2138,7 @@
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(label1);
             tabPage1.Controls.Add(labWindSpeed);
             tabPage1.Controls.Add(labWindSpeedValue);
             tabPage1.Controls.Add(labPressure);
@@ -2436,9 +2438,9 @@
             labSunrise.Location = new Point(26, 258);
             labSunrise.Margin = new Padding(4, 0, 4, 0);
             labSunrise.Name = "labSunrise";
-            labSunrise.Size = new Size(77, 28);
+            labSunrise.Size = new Size(0, 28);
             labSunrise.TabIndex = 4;
-                // 
+            // 
             // labSunset
             // 
             labSunset.AutoSize = true;
@@ -2492,6 +2494,19 @@
             // 
             timerForecastError.Interval = 5000;
             timerForecastError.Tick += timerForecastError_Tick;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Comic Sans MS", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.ForeColor = Color.Black;
+            label1.Location = new Point(26, 258);
+            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(77, 28);
+            label1.TabIndex = 85;
+            label1.Text = "Изгрев";
             // 
             // Form1
             // 
@@ -2715,5 +2730,6 @@
         private FlowLayoutPanel sunFLP;
         private Label labForecastError;
         private System.Windows.Forms.Timer timerForecastError;
+        private Label label1;
     }
 }
