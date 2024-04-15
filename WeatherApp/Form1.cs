@@ -35,7 +35,6 @@ namespace WeatherApp
         private async void btnSearch_Click(object sender, EventArgs e)
         {
             await currentWeather();
-                
         }
         float lon;
         float lat;
@@ -64,8 +63,8 @@ namespace WeatherApp
                 labTempFahr.Text = $"{Math.Round(tempratureFahrenheit, 2)}°F";
                 labCondition.Text = Info.weather[0].main;
                 labDetails.Text = Info.weather[0].description.ToUpper();
-                labSunsetValue.Text = $"{convertDateTime(Info.sys.sunset)} UTC+2";
-                labSunriseValue.Text = $"{convertDateTime(Info.sys.sunrise)} UTC+2";
+                labSunsetValue.Text = $"{convertDateTime(Info.sys.sunset)}";
+                labSunriseValue.Text = $"{convertDateTime(Info.sys.sunrise)}";
                 labWindSpeedValue.Text = $"{Info.wind.speed} m/s";
                 labPressureValue.Text = $"{Info.main.pressure} hPa";
                 //променлива за мин и макс темп, за да можем да я превърнем в фаренхайт
@@ -90,7 +89,7 @@ namespace WeatherApp
                 //скриваме label-а за грешка, защото иначе седи върху друг label за сегашното време
                 labErrorWeather.Hide();
                 //показваме сегашното време и време на последна актуализация на информацията от API. 
-                labDateTime.Text = $"{convertDateTime(Info.dt)} UTC+2";
+                labDateTime.Text = $"{convertDateTime(Info.dt)}";
                 labLocalTime.Text = $"Сегашно време: {DateTime.Now}";
                 //стартираме функция за вземане на прогнозните данни 
                 await getForecast();
@@ -119,6 +118,7 @@ namespace WeatherApp
                 //пак използваме try, за да можем да хванем грешки
                 try
                 {
+                    
                     var json = await client.GetStringAsync(url);
                     //пак използваме десериализираните данни към променлива Info
                     var Info = JsonConvert.DeserializeObject<ForecastInfo.Rootobject>(json);
@@ -256,10 +256,19 @@ namespace WeatherApp
 
                     //правим usercontrol за 24-часова 7-дневна прогноза, заедно с променливи за UserControl класа.
                     UserControl1 FUK;
+                    //изчистваме ако има предишни данни
+                    monFLP.Controls.Clear();
+                    tueFLP.Controls.Clear();
+                    wedFLP.Controls.Clear();
+                    thuFLP.Controls.Clear();
+                    friFLP.Controls.Clear();
+                    satFLP.Controls.Clear();
+                    sunFLP.Controls.Clear();
                     string theTimeIsNow;
                     string theDayIsNow;
                     double UCTime;
                     double UCTimeF;
+                    
                     //for цикъл за първият ден
                     for (int i = 1; i < 25; i++)
                     {
@@ -368,8 +377,6 @@ namespace WeatherApp
 
                         sunFLP.Controls.Add(FUK);
                     }
-
-
                 }
                 //хващаме грешка при правенето на API Call-а към сайта. 
                 catch (Exception)
@@ -379,12 +386,20 @@ namespace WeatherApp
                 }
             }
         }
-
         //методът, който използваме за да превърнем стойностите от универсален unixtime към разбираем формат 
         static DateTime convertDateTime(long seconds)
         {
             DateTime day = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Local).ToLocalTime();
-            day = day.AddSeconds(seconds).ToLocalTime().AddHours(2);
+            DateTime thisTime = DateTime.Now;
+            bool isDaylight = TimeZoneInfo.Local.IsDaylightSavingTime(thisTime);
+            if (isDaylight)
+            {
+                day = day.AddSeconds(seconds).ToLocalTime().AddHours(3);
+            }
+            else
+            {
+                day = day.AddSeconds(seconds).ToLocalTime().AddHours(2);
+            }
             return day;
         }
         //таймер за скриване на съобщението за грешка след изминали 5 секунди от показване 
@@ -397,10 +412,7 @@ namespace WeatherApp
         private void timerForecastError_Tick(object sender, EventArgs e)
         {
             labForecastError.Hide();
-        }
-
-       
+        }  
     }
-
 }
 
