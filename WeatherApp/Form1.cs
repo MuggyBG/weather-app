@@ -245,13 +245,13 @@ namespace WeatherApp
 
 
                     //сменяме името от placeholder дни към актуални за сегашния ден в седмицата имена.
-                    tabPageMonday.Text = convertDateTime(Info.daily.time[0] + 86400).DayOfWeek.ToString();
-                    tabPageTuesday.Text = convertDateTime(Info.daily.time[1] + 86400).DayOfWeek.ToString();
-                    tabPageWednesday.Text = convertDateTime(Info.daily.time[2] + 86400).DayOfWeek.ToString();
-                    tabPageThursday.Text = convertDateTime(Info.daily.time[3] + 86400).DayOfWeek.ToString();
-                    tabPageFriday.Text = convertDateTime(Info.daily.time[4] + 86400).DayOfWeek.ToString();
-                    tabPageSaturday.Text = convertDateTime(Info.daily.time[5] + 86400).DayOfWeek.ToString();
-                    tabPageSunday.Text = convertDateTime(Info.daily.time[6] + 86400).DayOfWeek.ToString();
+                    tabPageMonday.Text = convertDateTime(Info.daily.time[0]).DayOfWeek.ToString();
+                    tabPageTuesday.Text = convertDateTime(Info.daily.time[1]).DayOfWeek.ToString();
+                    tabPageWednesday.Text = convertDateTime(Info.daily.time[2]).DayOfWeek.ToString();
+                    tabPageThursday.Text = convertDateTime(Info.daily.time[3]).DayOfWeek.ToString();
+                    tabPageFriday.Text = convertDateTime(Info.daily.time[4]).DayOfWeek.ToString();
+                    tabPageSaturday.Text = convertDateTime(Info.daily.time[5]).DayOfWeek.ToString();
+                    tabPageSunday.Text = convertDateTime(Info.daily.time[6]).DayOfWeek.ToString();
 
 
                     //правим usercontrol за 24-часова 7-дневна прогноза, заедно с променливи за UserControl класа.
