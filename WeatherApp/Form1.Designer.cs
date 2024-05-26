@@ -175,6 +175,7 @@
             labSunTempVal = new Label();
             labTempSunday = new Label();
             tabPage1 = new TabPage();
+            label1 = new Label();
             labWindSpeed = new Label();
             labWindSpeedValue = new Label();
             labPressure = new Label();
@@ -201,7 +202,6 @@
             labSunsetValue = new Label();
             tabControl1 = new TabControl();
             timerForecastError = new System.Windows.Forms.Timer(components);
-            label1 = new Label();
             tabPage2.SuspendLayout();
             tabControl2.SuspendLayout();
             tabPageMonday.SuspendLayout();
@@ -288,6 +288,7 @@
             labErrorWeather.ForeColor = Color.Red;
             labErrorWeather.Location = new Point(673, 21);
             labErrorWeather.Margin = new Padding(4, 0, 4, 0);
+            labErrorWeather.MaximumSize = new Size(562, 0);
             labErrorWeather.Name = "labErrorWeather";
             labErrorWeather.Size = new Size(0, 27);
             labErrorWeather.TabIndex = 44;
@@ -302,10 +303,10 @@
             tabPage2.AutoScroll = true;
             tabPage2.Controls.Add(labForecastError);
             tabPage2.Controls.Add(tabControl2);
-            tabPage2.Location = new Point(4, 37);
+            tabPage2.Location = new Point(4, 29);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(888, 523);
+            tabPage2.Size = new Size(888, 531);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Прогноза";
             tabPage2.UseVisualStyleBackColor = true;
@@ -2171,6 +2172,19 @@
             tabPage1.Text = "Сегашно време";
             tabPage1.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Comic Sans MS", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.ForeColor = Color.Black;
+            label1.Location = new Point(26, 258);
+            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(77, 28);
+            label1.TabIndex = 85;
+            label1.Text = "Изгрев";
+            // 
             // labWindSpeed
             // 
             labWindSpeed.AutoSize = true;
@@ -2494,19 +2508,6 @@
             // 
             timerForecastError.Interval = 5000;
             timerForecastError.Tick += timerForecastError_Tick;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Comic Sans MS", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.ForeColor = Color.Black;
-            label1.Location = new Point(26, 258);
-            label1.Margin = new Padding(4, 0, 4, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(77, 28);
-            label1.TabIndex = 85;
-            label1.Text = "Изгрев";
             // 
             // Form1
             // 

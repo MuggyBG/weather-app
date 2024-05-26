@@ -31,7 +31,7 @@ namespace WeatherApp
         }
 
 
-        //пускане на метода за вземане на актуални метеорологични данни при натискане на бутона. 
+        //инициализирането на методът за вземането на актуалните метеорологични данни става при натискане на бутон btnSearch. 
         private async void btnSearch_Click(object sender, EventArgs e)
         {
             await currentWeather();
@@ -95,11 +95,12 @@ namespace WeatherApp
                 await getForecast();
             }
             //хващаме грешки и при такива, показваме label за грешка и започваме таймер да скрием лейбъла след 5 секунди.
-            catch (Exception)
+            catch (Exception ex)
             {
                 labDateTime.Hide();
                 labErrorWeather.Show();
-                labErrorWeather.Text = "Грешка, моля проверете написаното и опитайте отново.";
+                labErrorWeather.Text = "Грешка, моля проверете написаното и опитайте отново." + $" {ex.Message}";
+                labErrorWeather.BringToFront();
                 timerErrorWeather.Start();
             }
 
@@ -107,20 +108,20 @@ namespace WeatherApp
         //метод за прогнозни данни
         async Task getForecast()
         {
-            //създаваме нов HttpClient, за вземане на данни от друг API за прогноза
+            //задаваме нов HttpClient, за вземане на данни от друг API за прогноза
             using var client = new HttpClient();
             {
                 //даваме url за API Call, в който използваме променливите за географска дължина и географска ширина lon и lat. 
                 string url = string.Format($"https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={lon}&hourly=temperature_2m,precipitation_probability" +
                     $",precipitation,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_hours,sunrise,sunset" +
                     $",wind_speed_10m_max,precipitation_probability_max&timeformat=unixtime&timezone=Europe%2FMoscow");
-                //изпращаме резултата към променлива json
+               
                 //пак използваме try, за да можем да хванем грешки
                 try
                 {
-                    
+                    //задаваме полученото от заявката като стойност на променливата json
                     var json = await client.GetStringAsync(url);
-                    //пак използваме десериализираните данни към променлива Info
+                    //пак десериализираме данните и ги задаваме като стойност на променливата Info
                     var Info = JsonConvert.DeserializeObject<ForecastInfo.Rootobject>(json);
                     // Информацията на сегашния ден 1 - температура, изгрев/залез, скорост на вятъра и атмосферно налягане.
                     double monTemp = Math.Round(Info.hourly.temperature_2m[0], 2);
@@ -254,7 +255,7 @@ namespace WeatherApp
                     tabPageSunday.Text = convertDateTime(Info.daily.time[6]).DayOfWeek.ToString();
 
 
-                    //правим usercontrol за 24-часова 7-дневна прогноза, заедно с променливи за UserControl класа.
+                    //създаваме usercontrol за 24-часова 7-дневна прогноза, заедно с променливи за UserControl класа.
                     UserControl1 FUK;
                     //изчистваме ако има предишни данни
                     monFLP.Controls.Clear();
@@ -379,14 +380,14 @@ namespace WeatherApp
                     }
                 }
                 //хващаме грешка при правенето на API Call-а към сайта. 
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    labForecastError.Text = "Имаше проблем при вземането на данни за прогноза.";
-
+                    labForecastError.Text = "Имаше проблем при вземането на данни за прогноза." + $" {ex.Message}" ;
+                    labForecastError.BringToFront();
                 }
             }
         }
-        //методът, който използваме за да превърнем стойностите от универсален unixtime към разбираем формат 
+        //методът, който използваме за да преобразуваме стойностите от универсален unixtime към разбираем формат 
         static DateTime convertDateTime(long seconds)
         {
             DateTime day = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Local).ToLocalTime();
